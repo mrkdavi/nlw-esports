@@ -29,11 +29,11 @@ app.get('/games', async (req, res) => {
   res.status(200).json(games);
 })
 
-app.post('/games/:id/ads', (req, res) => {
+app.post('/games/:id/ads', async (req, res) => {
   const gameId = req.params.id;
   const body = req.body;
 
-  const ad = prisma.ad.create({
+  const ad = await prisma.ad.create({
     data: {
       gameId,
       name: body.name,
