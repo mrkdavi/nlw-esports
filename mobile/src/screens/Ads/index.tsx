@@ -20,6 +20,7 @@ import logoImg from "../../assets/logo-nlw-esports.png";
 import { styles } from "./styles";
 import { THEME } from "../../theme";
 import { Loading } from "../../components/Loading";
+import { DuoMatch } from "../../components/DuoMatch";
 
 export function Ads() {
   const route = useRoute();
@@ -27,12 +28,19 @@ export function Ads() {
 
   const [ads, setAds] = useState<DuoCardProps[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [discordDuoSelected, setDiscordDuoSelected] = useState("");
 
   const navigation = useNavigation();
 
-  function handleGoBackHome() {
+  const handleGoBackHome = () => {
     navigation.navigate("home");
-  }
+  };
+
+  const getDiscordUser = (adId: string) => {
+    fetch(`http://192.168.0.111:3000/ads/${adId}/discord`)
+      .then((res) => res.json())
+      .then((data) => setDiscordDuoSelected(data.discord));
+  };
 
   useEffect(() => {
     fetch(`http://192.168.0.111:3000/games/${game.id}/ads`)
@@ -69,7 +77,12 @@ export function Ads() {
               data={ads}
               keyExtractor={(item) => item.id}
               renderItem={({ item }) => (
-                <DuoCard onConnect={() => {}} data={item} />
+                <DuoCard
+                  data={item}
+                  onConnect={() => {
+                    getDiscordUser(item.id);
+                  }}
+                />
               )}
               style={styles.containerList}
               contentContainerStyle={
@@ -82,11 +95,16 @@ export function Ads() {
                 </Text>
               )}
               horizontal
-              // style={styles.flatList}
             />
           ) : (
             <Loading />
           )}
+
+          <DuoMatch
+            discord={discordDuoSelected}
+            visible={discordDuoSelected.length > 0}
+            onClose={() => setDiscordDuoSelected("")}
+          />
         </SafeAreaView>
       </ScrollView>
     </Background>
