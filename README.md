@@ -1,16 +1,39 @@
 <p align="center">
   <img src="./assets/logo-nlw-esports.svg" />
+  <br>
+  <br>
+  <hr />
+</p>
   <p align="center">
     Um projeto desenvolvido durante a 7º edição do NLW (Next Level Week) da Rocketseat
   </p>
+
+<br>
+
+<p align="center">
+<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/mrkdavi/nlw-esports">
+<img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/mrkdavi/nlw-esports">
+<img alt="GitHub" src="https://img.shields.io/badge/category-game-green">    
+<img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/mrkdavi/nlw-esports?style=social">
 </p>
 
-
-## Sobre o projeto
-
+# Sobre o projeto
 O projeto trata-se basicamente de uma plataforma que tem como objetivo conectar pessoas por meio de anúncios, criados pelos próprios usuários, para jogarem. A criação de anúncios ficou exclusiva para a aplicação web e a parte de conexão ficou exclusiva para a aplicação mobile. Ainda pretendo desenvolver todas as funcionalidades para ambas as plataformas.
 
+<br>
+
 ![App Design](./assets/image1.jpg)
+
+# Tecnologias utilizadas
+- React
+- Radix UI
+- Tailwind CSS
+- React Native
+- Expo
+- Node.js
+- Prisma
+- SQLite
+
 
 # Inicialização
 ## Server
